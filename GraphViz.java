@@ -1,4 +1,4 @@
-package com.github.jabbalaci.graphviz;
+
 
 // GraphViz.java - a simple API to call dot from Java programs
 
@@ -143,7 +143,7 @@ public class GraphViz
             this.tempDir = "c:/temp";
             this.executable = "c:/Program Files (x86)/Graphviz 2.28/bin/dot.exe";
         } else if (GraphViz.osName.equals("MacOSX")) {
-            this.tempDir = "/tmp";
+            this.tempDir = System.getProperty("user.dir");
             this.executable = "/usr/local/bin/dot";
         } else if (GraphViz.osName.equals("Linux")) {
             this.tempDir = "/tmp";

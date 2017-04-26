@@ -1,11 +1,14 @@
-package com.github.jabbalaci.graphviz;
+
 
 import java.io.File;
 
 public class Proba
 {
+	private static String dir;
+
 	public static void main(String[] args)
 	{
+		dir = System.getProperty("user.dir");
 		Proba p = new Proba();
 		p.start();
 //		p.start2();
@@ -19,8 +22,12 @@ public class Proba
 	{
 		GraphViz gv = new GraphViz();
 		gv.addln(gv.start_graph());
-		gv.addln("A -> B;");
-		gv.addln("A -> C;");
+		gv.addln("Abby->Beth;");
+		gv.addln("Abby->Cindy;");
+		gv.addln("Beth->Donny;");
+		gv.addln("Jenny-> {michael, Elaina, Peter};");
+		// gv.addln("Jenny->Elaina;");
+		gv.addln("Elaina->Oli;");
 		gv.addln(gv.end_graph());
 		System.out.println(gv.getDotSource());
 
@@ -42,7 +49,8 @@ public class Proba
 		// 		String repesentationType= "twopi";
 		// 		String repesentationType= "circo";
 
-		File out = new File("/tmp/out"+gv.getImageDpi()+"."+ type);   // Linux
+		// File out = new File("/tmp/out"+gv.getImageDpi()+"."+ type);   // Linux
+		File out = new File(dir+"/out"+gv.getImageDpi()+"."+type);
 		// File out = new File("out"+gv.getImageDpi()+"."+ type);   // Linux
 		//      File out = new File("c:/eclipse.ws/graphviz-java-api/out." + type);    // Windows
 		gv.writeGraphToFile( gv.getGraph(gv.getDotSource(), type, repesentationType), out );
